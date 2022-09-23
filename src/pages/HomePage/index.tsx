@@ -1,32 +1,23 @@
 import React, { useState } from "react";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
+import { useWallet } from "@solana/wallet-adapter-react";
+import CandyMachine from "../../components/CandyMachine";
 
 const HomePage = () => {
-  const [walletConneted, setWalletConnected] = useState<boolean>(false);
-
-  const connectWalletHandler = () => {};
-
-  const mintNFTHandler = () => {
-    setWalletConnected(false);
-  };
+  const wallet = useWallet()
 
   return (
     <div className="container-home">
+      <img src="/preview.png" className="preview" alt="mlh" />
       <h1>🍭 MLH Funky Fellows</h1>
       <h5>
         A clean collection of 50 builders in the MLH community that will
         transcend the internet. Not officially affiliated with MLH
       </h5>
-      {walletConneted ? (
-        <button className="mint-nft" onClick={mintNFTHandler}>
-          Mint NFT
-        </button>
-      ) : (
-        <WalletMultiButton
-          className="connect-wallet"
-          onClick={connectWalletHandler}
-        />
-      )}
+      <WalletMultiButton
+        className="connect-wallet"
+      />
+      {wallet.publicKey && <CandyMachine walletAddress={wallet} />}
     </div>
   );
 };

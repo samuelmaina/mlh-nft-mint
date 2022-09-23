@@ -69,14 +69,33 @@ h5 {
     #ff512f 100%
   );
 }
-.container-home button.mint-nft {
-  background-image: linear-gradient(
-    to right,
-    #aa076b 0%,
-    #61045f 51%,
-    #aa076b 100%
-  );
+
+.mint-button {
+  background: -webkit-linear-gradient(left, #4e44ce, #35aee2);
+  flex: 1 1 auto;
+  background-size: 200% auto;
+  transition: 0.5s ease;
+  border: none;
+  min-width: 18rem;
+  max-width: max-content;
+  height: 5rem;
+  border-radius: 8px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: gradient-animation 4s ease infinite;
 }
+
+.preview {
+  /* background-color: #60c657; */
+  margin-bottom: 40px;
+  width: 25%;
+}
+
 
 /* Media Queries */
 @media screen and (max-width: 1400px) {

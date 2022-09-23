@@ -4,12 +4,8 @@ import {
   WalletProvider,
 } from "@solana/wallet-adapter-react";
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
-import { UnsafeBurnerWalletAdapter } from "@solana/wallet-adapter-wallets";
-import {
-  WalletModalProvider,
-  WalletDisconnectButton,
-  WalletMultiButton,
-} from "@solana/wallet-adapter-react-ui";
+import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
+import * as walletAdapterWallets from "@solana/wallet-adapter-wallets";
 import { clusterApiUrl } from "@solana/web3.js";
 
 // Default styles that can be overridden by your app
@@ -20,8 +16,7 @@ const WalletContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   const endpoint = useMemo(() => clusterApiUrl(network), [network]);
 
-  const wallets = useMemo(() => [new UnsafeBurnerWalletAdapter()], []);
-
+  const wallets = [new walletAdapterWallets.PhantomWalletAdapter()];
   return (
     <ConnectionProvider endpoint={endpoint}>
       <WalletProvider wallets={wallets} autoConnect>

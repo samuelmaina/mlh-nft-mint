@@ -1,13 +1,12 @@
 import React, { useState } from "react";
+import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 
 const HomePage = () => {
   const [walletConneted, setWalletConnected] = useState<boolean>(false);
 
-  const connectWalletHandler = () => {
-    setWalletConnected(true);
-  };
+  const connectWalletHandler = () => {};
 
-  const minNFTHandler = () => {
+  const mintNFTHandler = () => {
     setWalletConnected(false);
   };
 
@@ -19,13 +18,14 @@ const HomePage = () => {
         transcend the internet. Not officially affiliated with MLH
       </h5>
       {walletConneted ? (
-        <button className="mint-nft" onClick={minNFTHandler}>
+        <button className="mint-nft" onClick={mintNFTHandler}>
           Mint NFT
         </button>
       ) : (
-        <button className="connect-wallet" onClick={connectWalletHandler}>
-          Connect Wallet
-        </button>
+        <WalletMultiButton
+          className="connect-wallet"
+          onClick={connectWalletHandler}
+        />
       )}
     </div>
   );

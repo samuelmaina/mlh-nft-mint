@@ -9,5 +9,6 @@ This project was done in conjuction to 22.FALL Orientation Hackathon.
 3. Run `npm run start` to start the project
 
 ### Authors
+Samuel Maina  
 Mohd. Yahya  
 Bryan Tan

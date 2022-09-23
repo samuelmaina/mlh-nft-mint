@@ -2,6 +2,7 @@
   "name": "mlh-nft-mint",
   "version": "0.1.0",
   "private": true,
+  "main": "index.tsx",
   "dependencies": {
     "@solana-mobile/wallet-adapter-mobile": "^0.9.1",
     "@solana/wallet-adapter-base": "^0.9.17",

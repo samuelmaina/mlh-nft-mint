@@ -8,6 +8,7 @@ const HomePage = () => {
 
   return (
     <div className="container-home">
+      <img src="/preview.png" className="preview" alt="mlh" />
       <h1>🍭 MLH Funky Fellows</h1>
       <h5>
         A clean collection of 50 builders in the MLH community that will

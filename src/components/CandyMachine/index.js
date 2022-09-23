@@ -5,6 +5,7 @@ import { MintLayout, TOKEN_PROGRAM_ID, Token } from "@solana/spl-token";
 import { sendTransactions } from "./connection";
 import { useToast, Link, HStack, Text, } from '@chakra-ui/react'
 import { ExternalLinkIcon } from "@chakra-ui/icons"
+window.Buffer = window.Buffer || require("buffer").Buffer;
 
 import {
     candyMachineProgram,

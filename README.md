@@ -1,7 +1,7 @@
 # MLH Funky Fellows NFTs
 ### Welcome 👋
 
-MLH Funky Fellows NFTs is an frontend application that allows people to buy and sell NFTs using the Solana blockchain technology.
+MLH Funky Fellows NFTs is an frontend application that allows MLH Fellows to mint NFTs using the Solana blockchain technology.
 
 A clean collection of 50 builders in the MLH community that will transcend the internet. Not officially affiliated with MLH.
 

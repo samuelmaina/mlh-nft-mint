@@ -3,10 +3,8 @@ import { Connection, PublicKey } from "@solana/web3.js";
 import { Program, AnchorProvider, web3 } from "@project-serum/anchor";
 import { MintLayout, TOKEN_PROGRAM_ID, Token } from "@solana/spl-token";
 import { sendTransactions } from "./connection";
-import { useToast, Link, HStack, Text, } from '@chakra-ui/react'
+import { useToast, Link, HStack, Text} from '@chakra-ui/react'
 import { ExternalLinkIcon } from "@chakra-ui/icons"
-window.Buffer = window.Buffer || require("buffer").Buffer;
-
 import {
     candyMachineProgram,
     TOKEN_METADATA_PROGRAM_ID,
@@ -15,7 +13,9 @@ import {
     getNetworkExpire,
     getNetworkToken,
     CIVIC,
-} from "./helpers";
+} from "./helpers"
+
+window.Buffer = window.Buffer || require("buffer").Buffer
 
 const { SystemProgram } = web3;
 const opts = {
@@ -23,8 +23,8 @@ const opts = {
 };
 
 const CandyMachine = ({ walletAddress }) => {
-    const toast = useToast()
     const [candyMachine, setCandyMachine] = useState(null);
+    const toast = useToast()
 
     const getCandyMachineCreator = async (candyMachine) => {
         const candyMachineID = new PublicKey(candyMachine);
@@ -222,48 +222,54 @@ const CandyMachine = ({ walletAddress }) => {
                 remainingAccounts: remainingAccounts.length > 0 ? remainingAccounts : undefined,
             })
         );
-
+        
         try {
-            let transactionId = await sendTransactions(
-                candyMachine.program.provider.connection,
-                candyMachine.program.provider.wallet,
-                [instructions, cleanupInstructions],
-                [signers, []]
-            ).txs.map(t => t.txid)
-            console.log("transactionId: ", transactionId)
-
-            toast({
-                title: "Transaction submitted",
-                description: 
-                    <Link href={`https://solana.fm/tx/${transactionId}?cluster=devnet-solana`} isExternal>
-                        <HStack>
-                            <Text>View transaction on SolanaFM</Text>
-                            <ExternalLinkIcon />
-                        </HStack>
-                    </Link>,
-                isClosable: true,
-                duration: 8000,
-                status: 'success',
-                variant: 'subtle',
-            })
+            return (
+                await sendTransactions(
+                  candyMachine.program.provider.connection,
+                  candyMachine.program.provider.wallet,
+                  [instructions, cleanupInstructions],
+                  [signers, []],
+                )
+            ).txs.map(t => 
+                toast({
+                    title: "Transaction submitted",
+                    description: 
+                        <Link href={`https://solana.fm/tx/${t.txid}?cluster=devnet-solana`} isExternal>
+                            <HStack>
+                                <Text>View transaction on SolanaFM</Text>
+                                <ExternalLinkIcon />
+                            </HStack>
+                        </Link>,
+                    isClosable: true,
+                    containerStyle: {
+                        fontSize: '2xl',
+                        margin: '45px'
+                    },
+                    duration: 8000,
+                    status: 'success',
+                    variant: 'subtle',
+                })
+            );
       
         } catch (e) {
             toast({
                 title: 'Transaction failed',
+                containerStyle: {
+                    fontSize: '2xl',
+                    margin: '45px'
+                },
                 description: JSON.stringify(e.message).replace(/^"(.*)"$/, '$1'),
                 isClosable: true,
                 duration: 8000,
                 status: 'error',
+                position: 'bottom-right',
                 variant: 'subtle',
             })
             console.log("Transaction failed: ", e);
         }
         return [];
     };
-
-    useEffect(() => {
-        getCandyMachineState();
-    }, []);
 
     const getProvider = () => {
         const rpcHost = process.env.REACT_APP_SOLANA_RPC_HOST;
@@ -351,6 +357,9 @@ const CandyMachine = ({ walletAddress }) => {
         });
     };
     
+    useEffect(() => {
+        getCandyMachineState();
+    }, []);
 
     return (
         // Only show this if machineStats is available
@@ -359,7 +368,7 @@ const CandyMachine = ({ walletAddress }) => {
                 <button className="mint-button" onClick={mintToken}>
                     Mint NFT
                 </button>
-                <p>{`Items Minted: ${candyMachine.state.itemsRedeemed} / ${candyMachine.state.itemsAvailable}`}</p>
+                <p className="mint-description">{`Items Minted: ${candyMachine.state.itemsRedeemed} / ${candyMachine.state.itemsAvailable}`}</p>
             </div>
         )
     );

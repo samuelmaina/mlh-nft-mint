@@ -1,15 +1,18 @@
+import { ChakraProvider } from "@chakra-ui/react";
 import React from "react";
 import "./App.css";
-import WalletContextProvider from "./components/WalletContextProvide";
+import WalletContextProvider from "./components/WalletContextProvider";
 import HomePage from "./pages/HomePage";
 
 function App() {
   return (
-    <WalletContextProvider>
-      <div className="App">
-        <HomePage />
-      </div>
-    </WalletContextProvider>
+    <ChakraProvider>
+      <WalletContextProvider>
+        <div className="App">
+          <HomePage />
+        </div>
+      </WalletContextProvider>
+    </ChakraProvider>
   );
 }
 

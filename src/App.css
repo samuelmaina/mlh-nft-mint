@@ -1,19 +1,16 @@
 .App {
-  height: 100vh;
   background-color: #141414;
   color: #fff;
   overflow: scroll;
   text-align: center;
   overflow: hidden;
+  min-height: 100vh;
 }
 
 /* Container Home */
 .container-home {
-  position: absolute;
+  margin:2rem auto;
   background-color: rgb(44, 43, 43);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   border-radius: 1%;
@@ -63,6 +60,19 @@ h5 {
 .container-home button:hover {
   background-position: right center; /* change the direction of the change here */
 }
+.home-link{
+  font-size: large;
+  background-color: brown !important;
+}
+.grid-item{
+  border-radius:2%;
+  background-color: black;
+  padding:2rem;
+  margin: 2rem;
+}
+.grid-item ul{
+  list-style-type: none;
+}
 
 .container-home button.connect-wallet {
   background-image: linear-gradient(
@@ -109,13 +119,18 @@ h5 {
 .gridNFT {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 0.5em;
+  grid-gap: 0.7em;
 }
 
-/* Media Queries */
+/* Media Queries */ 
 @media screen and (max-width: 1400px) {
   .container-home {
     width: 100rem;
+  }
+  .gridNFT {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 0.2em;
   }
   .container-home h1 {
     font-size: 4.5rem;

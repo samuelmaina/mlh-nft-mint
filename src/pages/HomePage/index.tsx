@@ -2,7 +2,14 @@ import React, { useState } from "react";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import { useWallet, WalletContextState } from "@solana/wallet-adapter-react";
 import CandyMachine from "../../components/CandyMachine";
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
+import {
+  Tabs,
+  TabList,
+  TabPanels,
+  Tab,
+  TabPanel,
+  Link,
+} from "@chakra-ui/react";
 import { FetchNft } from "../../components/FetchNft";
 
 const HomePage = () => {
@@ -10,42 +17,34 @@ const HomePage = () => {
 
   return (
     <div className="container-home">
-<<<<<<< HEAD
-      <img src="/preview.png" className="preview" alt="mlh" />
-      <h1>🍭 MLH Funky Fellows</h1>
-      <h5>
-        A clean collection of 50 builders in the MLH community that will
-        transcend the internet. Not officially affiliated with MLH
-      </h5>
-      <WalletMultiButton className="connect-wallet" />
-      {wallet.publicKey && <CandyMachine walletAddress={wallet} />}
-=======
-    <Tabs variant={'soft-rounded'} colorScheme={'orange'}>
-      <TabList>
-        <Tab mr={4}>Mint a Funky Fellow</Tab>
-        <Tab>View your NFTs</Tab>
-      </TabList>
+      <Tabs variant={"soft-rounded"} colorScheme={"orange"}>
+        <TabPanels>
+          <TabPanel
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <TabList style={{ marginBottom: "20px" }}>
+              <Tab mr={4}>Mint a Funky Fellow</Tab>
+              <Tab>View your NFTs</Tab>
+            </TabList>
 
-      <TabPanels>
-        <TabPanel>
             <img src="/preview.png" className="preview" alt="mlh" />
             <h1>🍭 MLH Funky Fellows</h1>
             <h5>
               A clean collection of 50 builders in the MLH community that will
               transcend the internet. Not officially affiliated with MLH
             </h5>
-            <WalletMultiButton
-              className="connect-wallet"
-            />
+            <WalletMultiButton className="connect-wallet" />
             {wallet.publicKey && <CandyMachine walletAddress={wallet} />}
-        </TabPanel>
-
-        <TabPanel>
-          <FetchNft />
-        </TabPanel>
-      </TabPanels>
-    </Tabs>
->>>>>>> 92245c9f9158e4250d6ad744b3560810f5d68a6d
+          </TabPanel>
+          <TabPanel>
+            <FetchNft />
+          </TabPanel>
+        </TabPanels>
+      </Tabs>
     </div>
   );
 };

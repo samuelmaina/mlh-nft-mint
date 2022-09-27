@@ -10,15 +10,19 @@ import {
   TabPanel,
   Link,
 } from "@chakra-ui/react";
-import { FetchNft } from "../../components/FetchNft";
-import { container, tabDesign } from "./indexStyles";
+import { FetchNft } from "../../components/FetchNft/FetchNft";
+import { container, tabDesign } from "./styles";
 
 const HomePage = () => {
   const wallet: WalletContextState = useWallet();
 
   return (
-    <div className="container-home">
-      <Tabs variant={"soft-rounded"} colorScheme={"orange"}>
+    <div>
+      <Tabs
+        className="container-home"
+        variant={"soft-rounded"}
+        colorScheme={"orange"}
+      >
         <TabPanels>
           {/**@ts-ignore */}
           <TabPanel style={container}>

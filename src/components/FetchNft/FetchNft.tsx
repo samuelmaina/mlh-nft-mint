@@ -10,6 +10,7 @@ import {
   useState,
 } from "react";
 import { Button, Link } from "@chakra-ui/react";
+import { linkStyle } from "./styles";
 
 export const FetchNft: FC = () => {
   const [nftData, setNftData] = useState<any>([]);
@@ -47,7 +48,9 @@ export const FetchNft: FC = () => {
   return (
     <div className="container">
       <Button className="home-link">
-        <Link href="/">Go Back to the home page</Link>
+        <Link style={linkStyle} href="/">
+          Go Back to the home page
+        </Link>
       </Button>
       {nftData && (
         <div className={"gridNFT"}>

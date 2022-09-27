@@ -10,11 +10,14 @@
 /* Container Home */
 .container-home {
   position: absolute;
+  background-color: rgb(44, 43, 43);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
+  border-radius: 1%;
+  box-shadow: 0 0 30px rgba(32, 32, 32, 0.5);
   padding: 2rem 0rem;
   align-items: center;
   width: 60%;
@@ -93,6 +96,9 @@ h5 {
 
 .mint-description {
   font-size: medium;
+  background-color: blueviolet;
+  height: 3rem;
+
 }
 
 .preview {
@@ -126,6 +132,7 @@ h5 {
     font-size: 2.5rem;
   }
 }
+
 
 @media screen and (max-width: 500px) {
   .container-home {

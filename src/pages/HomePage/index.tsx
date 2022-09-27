@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
-import { useWallet } from "@solana/wallet-adapter-react";
+import { useWallet, WalletContextState } from "@solana/wallet-adapter-react";
 import CandyMachine from "../../components/CandyMachine";
 
 const HomePage = () => {
-  const wallet = useWallet()
+  const wallet: WalletContextState = useWallet();
 
   return (
     <div className="container-home">
@@ -14,9 +14,7 @@ const HomePage = () => {
         A clean collection of 50 builders in the MLH community that will
         transcend the internet. Not officially affiliated with MLH
       </h5>
-      <WalletMultiButton
-        className="connect-wallet"
-      />
+      <WalletMultiButton className="connect-wallet" />
       {wallet.publicKey && <CandyMachine walletAddress={wallet} />}
     </div>
   );

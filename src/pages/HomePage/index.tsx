@@ -10,39 +10,60 @@ import {
   TabPanel,
   Link,
 } from "@chakra-ui/react";
-import { FetchNft } from "../../components/FetchNft";
+import { FetchNft } from "../../components/FetchNft/FetchNft";
+import { container, tabDesign } from "./styles";
 
 const HomePage = () => {
   const wallet: WalletContextState = useWallet();
+  const [currentPage, setCurrentPage] = useState<string>("home");
 
+  const changeToHomePage = () => {
+    setCurrentPage("home");
+  };
+  const changeToViewNFTs = () => {
+    setCurrentPage("nfts");
+  };
   return (
-    <div className="container-home">
-      <Tabs variant={"soft-rounded"} colorScheme={"orange"}>
+    <div>
+      <Tabs
+        className="container-home"
+        variant={"soft-rounded"}
+        colorScheme={"orange"}
+      >
+        <TabList style={tabDesign}>
+          <Tab mr={4} onClick={changeToHomePage}>
+            Mint a Funky Fellow
+          </Tab>
+          <Tab onClick={changeToViewNFTs}>View your NFTs</Tab>
+        </TabList>
         <TabPanels>
-          <TabPanel
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <TabList style={{ marginBottom: "20px" }}>
-              <Tab mr={4}>Mint a Funky Fellow</Tab>
-              <Tab>View your NFTs</Tab>
-            </TabList>
-
-            <img src="/preview.png" className="preview" alt="mlh" />
-            <h1>🍭 MLH Funky Fellows</h1>
-            <h5>
-              A clean collection of 50 builders in the MLH community that will
-              transcend the internet. Not officially affiliated with MLH
-            </h5>
-            <WalletMultiButton className="connect-wallet" />
-            {wallet.publicKey && <CandyMachine walletAddress={wallet} />}
+          {/**@ts-ignore */}
+          <TabPanel style={container}>
+            {currentPage === "home" ? (
+              <>
+                <img src="/preview.png" className="preview" alt="mlh" />
+                <h1>🍭 MLH Funky Fellows</h1>
+                <h5>
+                  A clean collection of 50 builders in the MLH community that
+                  will transcend the internet. Not officially affiliated with
+                  MLH
+                </h5>
+                <WalletMultiButton className="connect-wallet" />
+                {wallet.publicKey && <CandyMachine walletAddress={wallet} />}
+              </>
+            ) : (
+              <></>
+            )}
           </TabPanel>
-          <TabPanel>
-            <FetchNft />
-          </TabPanel>
+          {currentPage === "nfts" ? (
+            <>
+              <TabPanel>
+                <FetchNft />
+              </TabPanel>
+            </>
+          ) : (
+            <></>
+          )}
         </TabPanels>
       </Tabs>
     </div>

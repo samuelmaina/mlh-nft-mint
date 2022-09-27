@@ -10,10 +10,10 @@ import {
   useState,
 } from "react";
 import { Button, Link } from "@chakra-ui/react";
+import { linkStyle, details } from "./styles";
 
 export const FetchNft: FC = () => {
   const [nftData, setNftData] = useState<any>([]);
-
   const { publicKey } = useWallet();
   const { connection } = useConnection();
 
@@ -47,7 +47,9 @@ export const FetchNft: FC = () => {
   return (
     <div className="container">
       <Button className="home-link">
-        <Link href="/">Go Back to the home page</Link>
+        <Link style={linkStyle} href="/">
+          Go Back to the home page
+        </Link>
       </Button>
       {nftData && (
         <div className={"gridNFT"}>
@@ -66,13 +68,13 @@ export const FetchNft: FC = () => {
               attributes: any[];
             }) => (
               <div className="grid-item">
-                <ul>{nft.name}</ul>
+                <div className="grid-item-title">{nft.name}</div>
                 <img src={nft.image} alt="" />
-                <ul>
+                <div style={details}>
                   {nft.attributes.map((attribute) => (
-                    <li>{`${attribute.trait_type}: ${attribute.value}`}</li>
+                    <p>{`${attribute.trait_type}: ${attribute.value}`}</p>
                   ))}
-                </ul>
+                </div>
               </div>
             ),
           )}

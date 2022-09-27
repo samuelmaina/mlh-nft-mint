@@ -11,6 +11,7 @@ import {
   Link,
 } from "@chakra-ui/react";
 import { FetchNft } from "../../components/FetchNft";
+import { container, tabDesign } from "./indexStyles";
 
 const HomePage = () => {
   const wallet: WalletContextState = useWallet();
@@ -19,14 +20,9 @@ const HomePage = () => {
     <div className="container-home">
       <Tabs variant={"soft-rounded"} colorScheme={"orange"}>
         <TabPanels>
-          <TabPanel
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <TabList style={{ marginBottom: "20px" }}>
+          {/**@ts-ignore */}
+          <TabPanel style={container}>
+            <TabList style={tabDesign}>
               <Tab mr={4}>Mint a Funky Fellow</Tab>
               <Tab>View your NFTs</Tab>
             </TabList>

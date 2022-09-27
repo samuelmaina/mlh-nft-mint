@@ -65,15 +65,17 @@ export const FetchNft: FC = () => {
               image: string | undefined;
               attributes: any[];
             }) => (
-              <div className="grid-item">
-                <ul>{nft.name}</ul>
-                <img src={nft.image} alt="" />
-                <ul>
-                  {nft.attributes.map((attribute) => (
-                    <li>{`${attribute.trait_type}: ${attribute.value}`}</li>
-                  ))}
-                </ul>
-              </div>
+              <Link href="/">
+                <div className="grid-item">
+                  <div className="grid-item-title">{nft.name}</div>
+                  <img src={nft.image} alt="" />
+                  <ul>
+                    {nft.attributes.map((attribute) => (
+                      <li>{`${attribute.trait_type}: ${attribute.value}`}</li>
+                    ))}
+                  </ul>
+                </div>
+              </Link>
             ),
           )}
         </div>

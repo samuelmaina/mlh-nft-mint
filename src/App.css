@@ -10,6 +10,7 @@
 /* Container Home */
 .container-home {
   margin:2rem auto;
+  height: 20%;
   background-color: rgb(44, 43, 43);
   display: flex;
   flex-direction: column;
@@ -62,13 +63,22 @@ h5 {
 }
 .home-link{
   font-size: large;
-  background-color: brown !important;
+  background-color: -webkit-linear-gradient(left, #4e44ce, #35aee2) !important;
+}
+.home-link a{
+  text-decoration: none;
 }
 .grid-item{
   border-radius:2%;
   background-color: black;
   padding:2rem;
   margin: 2rem;
+}
+.grid-item a :hover{
+  text-decoration: none !important;
+}
+.grid-item-title {
+  font-size: large;
 }
 .grid-item ul{
   list-style-type: none;

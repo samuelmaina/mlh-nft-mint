@@ -14,7 +14,6 @@ import { linkStyle } from "./styles";
 
 export const FetchNft: FC = () => {
   const [nftData, setNftData] = useState<any>([]);
-
   const { publicKey } = useWallet();
   const { connection } = useConnection();
 

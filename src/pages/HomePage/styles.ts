@@ -4,4 +4,4 @@ export const container = {
   alignItems: "center",
 };
 
-export const tabDesign = { marginBottom: "20px" };
+export const tabDesign = { marginLeft: "33%" };

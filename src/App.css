@@ -75,7 +75,6 @@ h5 {
 
 .mint-button {
   background: -webkit-linear-gradient(left, #4e44ce, #35aee2);
-  flex: 1 1 auto;
   background-size: 200% auto;
   transition: 0.5s ease;
   border: none;
@@ -107,6 +106,11 @@ h5 {
   width: 25%;
 }
 
+.gridNFT {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 0.5em;
+}
 
 /* Media Queries */
 @media screen and (max-width: 1400px) {
